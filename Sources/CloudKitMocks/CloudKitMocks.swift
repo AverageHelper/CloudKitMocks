@@ -8,7 +8,6 @@
 import Foundation
 import CloudKit
 import CloudStorage
-import CloudKitStorageHelpers
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
 public struct UploadableThing: Uploadable, Equatable {
@@ -50,12 +49,12 @@ public final class DownloadableThing: Downloadable, Equatable {
 }
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
-extension UploadableThing: CloudKitUploadable {
+extension UploadableThing {
     public static var recordType: CKRecord.RecordType { "UploadableThing" }
 }
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
-extension DownloadableThing: CloudKitDownloadable {
+extension DownloadableThing {
     public typealias ContainerType = CloudKitMockContainer
     
     public var recordID: CKRecord.ID {
@@ -76,7 +75,7 @@ public final class CloudKitMock {
 }
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
-public final class CloudKitMockContainer: CloudKitContainer {
+public final class CloudKitMockContainer {
     public typealias Database = CloudKitMockDatabase
     public typealias DefaultType = CloudKitMockContainer
     
@@ -112,7 +111,7 @@ private struct RecordIdentifier: Hashable {
 
 /// A mock for a CloudKit database.
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
-public final class CloudKitMockDatabase: CloudKitDatabase {
+public final class CloudKitMockDatabase {
     
     public typealias FetchOperationType = CloudKitMockFetch
     public typealias PushOperationType = CloudKitMockPush
@@ -189,16 +188,10 @@ public final class CloudKitMockDatabase: CloudKitDatabase {
             }
         }
     }
-    
-    public func addOperation(_ operation: CloudKitOperation) {
-        guard let op = operation as? CloudKitMockOperation else { return }
-        op.database = self
-        op.start()
-    }
 }
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
-public class CloudKitMockOperation: CloudKitOperation {
+public class CloudKitMockOperation {
     
     public var database: CloudKitMockDatabase?
     public private(set) var isRunning: Bool = false
@@ -219,7 +212,7 @@ public class CloudKitMockOperation: CloudKitOperation {
 
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
-public final class CloudKitMockFetch: CloudKitMockOperation, CloudKitFetchRecordsOperation {
+public final class CloudKitMockFetch: CloudKitMockOperation {
     
     public var delay: TimeInterval = 1
     public var fetchError: Error?
@@ -365,7 +358,7 @@ public final class CloudKitMockFetch: CloudKitMockOperation, CloudKitFetchRecord
 }
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, *)
-public final class CloudKitMockPush: CloudKitMockOperation, CloudKitModifyRecordsOperation {
+public final class CloudKitMockPush: CloudKitMockOperation {
     
     public var delay: TimeInterval = 0
     public var pushError: Error?
