@@ -5,6 +5,7 @@
 //  Created by James Robinson on 3/5/20.
 //
 
+#if canImport(CloudKit)
 import Foundation
 import CloudKit
 import CloudStorage
@@ -556,3 +557,4 @@ private extension Dictionary where Key == String, Value == URL {
     }
     
 }
+#endif
