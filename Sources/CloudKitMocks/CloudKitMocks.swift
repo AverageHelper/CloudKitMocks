@@ -47,7 +47,7 @@ public final class DownloadableThing: /*Downloadable,*/ Equatable {
     
 }
 
-@available(watchOS 3.0, *)
+@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
 extension UploadableThing {
     public static var recordType: CKRecord.RecordType { "UploadableThing" }
 }
