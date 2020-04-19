@@ -47,12 +47,12 @@ public final class DownloadableThing: /*Downloadable,*/ Equatable {
     
 }
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(watchOS 3.0, *)
 extension UploadableThing {
     public static var recordType: CKRecord.RecordType { "UploadableThing" }
 }
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 extension DownloadableThing {
     public typealias ContainerType = CloudKitMockContainer
     
@@ -67,13 +67,13 @@ extension DownloadableThing {
 
 // MARK: - Mocks
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public final class CloudKitMock {
     public static var currentUserID: String?
     public static var defaultContainer = CloudKitMockContainer()
 }
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public final class CloudKitMockContainer {
     public typealias Database = CloudKitMockDatabase
     public typealias DefaultType = CloudKitMockContainer
@@ -109,7 +109,7 @@ private struct RecordIdentifier: Hashable {
 }
 
 /// A mock for a CloudKit database.
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public final class CloudKitMockDatabase {
     
     public typealias FetchOperationType = CloudKitMockFetch
@@ -193,7 +193,7 @@ public final class CloudKitMockDatabase {
     }
 }
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public class CloudKitMockOperation {
     
     public var database: CloudKitMockDatabase?
@@ -214,7 +214,7 @@ public class CloudKitMockOperation {
 }
 
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public final class CloudKitMockFetch: CloudKitMockOperation {
     
     public var delay: TimeInterval = 1
@@ -360,7 +360,7 @@ public final class CloudKitMockFetch: CloudKitMockOperation {
     }
 }
 
-@available(OSX 10.10, iOS 8.0, tvOS 8.0, watchOS 3.0, *)
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public final class CloudKitMockPush: CloudKitMockOperation {
     
     public var delay: TimeInterval = 0
