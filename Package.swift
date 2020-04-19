@@ -16,16 +16,16 @@ let package = Package(
             targets: ["CloudKitMocks"]),
     ],
     dependencies: [
-        .package(
-            name: "CloudStorage",
-            url: "https://github.com/AverageHelper/CloudStorage.git",
-            .upToNextMinor(from: "0.1.0")
-        ),
+//        .package(
+//            name: "CloudStorage",
+//            url: "https://github.com/AverageHelper/CloudStorage.git",
+//            .upToNextMinor(from: "0.1.0")
+//        ),
     ],
     targets: [
         .target(
             name: "CloudKitMocks",
-            dependencies: ["CloudStorage"]),
+            dependencies: []),
         .testTarget(
             name: "CloudKitMocksTests",
             dependencies: ["CloudKitMocks"]),
